@@ -10,3 +10,107 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+/* ==========================================
+   STYLE COMPACT ET ACCESSIBLE POUR LE JURY
+   ========================================== */
+
+/* Ajustements pour que l'application prenne tout l'écran sans défiler */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+}
+
+/* Couleur Orange officielle extraite du logo SVG */
+.text-doggy {
+    color: #FF5D24;
+}
+
+.btn-doggy {
+    background-color: #FF5D24;
+    border-color: #FF5D24;
+}
+
+/* --- LOGIQUE DES BULLES DE CHAT --- */
+.chat-container {
+    scroll-behavior: smooth; /* Défilement fluide vers le bas */
+}
+
+/* Largeur maximale des bulles de messages */
+.message-wrapper {
+    max-width: 85%;
+    clear: both;
+}
+
+/* Positionnement à droite pour l'utilisateur */
+.user-wrapper {
+    margin-left: auto;
+    text-align: right;
+}
+
+/* Positionnement à gauche pour l'IA */
+.ai-wrapper {
+    margin-right: auto;
+    text-align: left;
+}
+
+/* Style de base d'une bulle de texte */
+.message {
+    display: inline-block;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease;
+}
+
+.message:hover {
+    animation: légerRebond 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+@keyframes légerRebond {
+    0% {
+        transform: translateY(0); /* Position de départ */
+    }
+    40% {
+        transform: translateY(-6px); /* Elle monte de 6 pixels (léger) */
+    }
+    70% {
+        transform: translateY(2px); /* Elle redescend un tout petit peu trop bas */
+    }
+    100% {
+        transform: translateY(0); /* Elle revient à sa place initiale */
+    }
+}
+
+/* Bulle Utilisateur : fond gris clair, texte noir, angle droit en bas à droite */
+.user-message {
+    background-color: #e2e2e2;
+    color: #000;
+    border-bottom-right-radius: 4px !important;
+}
+
+/* Bulle IA Assistant : fond gris très clair, texte anthracite, angle droit en bas à gauche */
+.ai-message {
+    background-color: #f5f5f5;
+    color: #333;
+    border-bottom-left-radius: 4px !important;
+}
+
+/* --- ANIMATION DES ICONES DE LA NAVIGATION BASSE --- */
+.bottom-nav a {
+    text-decoration: none;
+    transition: transform 0.2s, color 0.2s;
+}
+
+/* Effet au survol de la souris : l'icône grandit et passe au orange Doggy */
+.bottom-nav a:hover {
+    transform: scale(1.15);
+    color: #FF5D24 !important;
+}
+
+/* Supprime le contour bleu de Bootstrap lors du clic dans le champ de texte */
+#userInput:focus {
+    border: 1px solid #cecece !important;
+    box-shadow: none !important;
+}
