@@ -10,8 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 0) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_26_095108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "dogs", force: :cascade do |t|
+    t.integer "age"
+    t.string "breed"
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id_id"
+    t.index ["user_id_id"], name: "index_dogs_on_user_id_id"
+  end
 end
