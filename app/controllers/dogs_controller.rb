@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
   def new
-    @dog = Dogs.new
+    @dog = Dog.new
   end
 
   def create
