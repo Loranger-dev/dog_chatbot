@@ -1,2 +1,16 @@
-<h1>Dogs#show</h1>
-<p>Find me in app/views/dogs/show.html.erb</p>
+<div class="container mt-4">
+
+  <div class="card-body">
+    <h1><%= @dog.name %></h1>
+
+    <p><strong>Race :</strong> <%= @dog.breed %></p>
+    <p><strong>Âge :</strong> <%= @dog.age %></p>
+    <p><strong>Description :</strong> <%= @dog.description %></p>
+
+    <div class="d-flex gap-2 mt-4">
+      <%= link_to "Voir tous les chiens", dogs_path, class: "btn btn-outline-primary" %>
+      <%= link_to "Créer un autre chien", new_dog_path, class: "btn btn-primary" %>
+
+
+  </div>
+</div>
