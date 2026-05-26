@@ -14,6 +14,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_26_102107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "dogs", force: :cascade do |t|
+    t.integer "age"
+    t.string "breed"
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id_id"
+    t.index ["user_id_id"], name: "index_dogs_on_user_id_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
@@ -24,15 +35,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_26_102107) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    end
-  create_table "dogs", force: :cascade do |t|
-    t.integer "age"
-    t.string "breed"
-    t.datetime "created_at", null: false
-    t.text "description"
-    t.string "name"
-    t.datetime "updated_at", null: false
-    t.bigint "user_id_id"
-    t.index ["user_id_id"], name: "index_dogs_on_user_id_id"
   end
 end
