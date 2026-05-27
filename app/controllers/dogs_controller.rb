@@ -5,6 +5,7 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new(dog_params)
+    @dog.user = current_user
 
     if @dog.save
       redirect_to dog_path(@dog), notice: "Profil du chien créé avec succés."
@@ -14,20 +15,20 @@ class DogsController < ApplicationController
   end
 
   def index
-    @dogs = Dog.all
+    @dogs = current_user.dogs
   end
 
   def show
-    @dog = Dog.find(params[:id])
+    @dog = current_user.dogs.find(params[:id])
   end
 
   def update
-    @dog = Dog.find(params[:id])
+    @dog = current_user.dogs.find(params[:id])
 
     if @dog.update(dog_params)
       redirect_to dog_path(@dog), notice: "Profil du chien mis à jour."
     else
-      render :show, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -42,5 +43,4 @@ class DogsController < ApplicationController
   def dog_params
     params.require(:dog).permit(:name, :breed, :age, :description)
   end
-
 end
