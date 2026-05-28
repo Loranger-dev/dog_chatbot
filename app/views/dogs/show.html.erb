@@ -3,6 +3,7 @@
   <%= link_to "← Retour",
       dogs_path,
       class: "text-decoration-none text-muted" %>
+      <h2 class="text-center fw-blod" ><%= current_user.email %></h2>
 
   <div class="card shadow-sm rounded-4 border-0 mt-3">
 
@@ -53,8 +54,18 @@
 
       </div>
 
+
+
     </div>
 
   </div>
 
+<div class="container">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            <% end %>
+          </li>
+</div>
 </div>
