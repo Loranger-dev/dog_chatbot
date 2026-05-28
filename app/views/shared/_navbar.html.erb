@@ -26,6 +26,28 @@
       </ul>
     </div>
   </div>
+
+
+<nav class="bottom-nav border-top bg-white d-flex justify-content-around align-items-center fixed-bottom py-3">
+                    <%= link_to root_path, class:"nav-icon #{'active-nav' if current_page?(root_path)} text-dark fs-3", title:"Accueil" do %>
+                    <i class="fa-solid fa-house"></i>
+                    <% end %>
+                    <%= link_to chats_path, class:"nav-icon #{'active-nav' if current_page?(root_path)} text-dark fs-3", title:"Map" do %>
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <% end %>
+                    <%= link_to chats_path, class:"nav-icon #{'active-nav' if current_page?(root_path)} text-dark fs-3", title:"Calendar" do %>
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <% end %>
+                    <%= link_to chats_path, class:"nav-icon #{'active-nav' if current_page?(root_path)} text-dark fs-3", title:"Chatbot" do %>
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <% end %>
+                    <%= link_to chats_path, class:"nav-icon #{'active-nav' if current_page?(root_path)} text-dark fs-3", title:"Profil" do %>
+                    <i class="fa-solid fa-user"></i>
+                    <% end %>
+                    <%# href="" class="text-dark fs-3" title="Carte"><i class="fa-solid fa-map-location-dot"></i>
+                    href="#" class="text-dark fs-3" title="Calendrier"><i class="fa-solid fa-calendar-days"></i>
+                    href="#" class="text-dark fs-3" title="Chatbot"><i class="fa-solid fa-comment-dots"></i>
+                    href="#" class="text-dark fs-3" title="Profil"><i class="fa-solid fa-user"></i> %>
 </nav>
 
 
