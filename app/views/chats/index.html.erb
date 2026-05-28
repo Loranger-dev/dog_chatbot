@@ -39,27 +39,23 @@
 
   <% if @chats.any? %>
 
-    <div class="row g-4">
+    <div class="d-inline row g-4">
 
       <% @chats.each do |chat| %>
 
-        <div class="col-md-4">
+        <div class="d-inline col-md-4">
 
-          <div class="card border-0 shadow-sm rounded-4 h-100">
+          <div class="card-chat border-0 shadow-sm rounded-4 h-100">
 
-            <div class="card-body p-4">
+            <div class="card-body p-0">
 
               <h5 class="fw-bold">
                 <%= chat.title %>
               </h5>
 
-              <p class="text-muted">
-                Chien : <%= chat.dog.name %>
-              </p>
-
               <%= link_to "Ouvrir",
                   chat_path(chat),
-                  class: "btn btn-orange rounded-pill w-100" %>
+                  class: "btn btn-orange rounded w-30" %>
 
             </div>
 

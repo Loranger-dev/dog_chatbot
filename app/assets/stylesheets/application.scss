@@ -141,6 +141,17 @@ html, body {
   border : 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.card-chat {
+  padding: 15px;
+  margin-bottom: 10px;
+  background : rgba(255, 255, 255, 0.2);
+  border-radius : 15px;
+  // box-shadow : 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter : blur(10px);
+  -webkit-backdrop-filter : blur(10px); /* Safari */
+  border : 1px solid rgba(255, 255, 255, 0.3);
+}
+
 
 .nav-icon a {
   color: black;
@@ -150,7 +161,6 @@ html, body {
 
 .active-nav {
   color: #ff5500;
-  background-color: #FF5D24;
 }
 
 #FEED_HOMEPAGE
