@@ -1,40 +1,32 @@
-class MessagesController < ApplicationController
-  def create
-    @chat = current_user.chats.find(params[:chat_id])
+def create
+  @chat = current_user.chats.find(params[:chat_id])
 
-    user_message = Message.create(
-      chat: @chat,
-      role: "user",
-      content: message_params[:content]
-    )
+  @message = @chat.messages.build(
+    content: params[:message][:content],
+    role: "user"
+  )
 
-    ai_response = generate_ai_response(
-      user_message.content,
-      @chat.dog
-    )
+  if @message.save
+    ruby_llm_chat = RubyLLM.chat
 
-    Message.create(
-      chat: @chat,
+    @chat.messages.each do |message|
+      ruby_llm_chat.add_message(
+        role: message.role,
+        content: message.content
+      )
+    end
+
+    response = ruby_llm_chat.with_instructions(
+      "Tu es un expert canin. Le chien s'appelle #{@chat.dog.name}"
+    ).ask(@message.content)
+
+    @chat.messages.create!(
       role: "assistant",
-      content: ai_response
+      content: response.content
     )
 
     redirect_to chat_path(@chat)
-  end
-
-  private
-
-  def message_params
-    params.require(:message).permit(:content)
-  end
-
-  def generate_ai_response(content, dog)
-    response = RubyLLM.chat.ask(
-      "Tu es un expert canin.
-    Le chien s'appelle #{dog.name}.
-    Message du propriétaire : #{content}"
-    )
-
-    response.content
+  else
+    render "chats/show", status: :unprocessable_entity
   end
 end
