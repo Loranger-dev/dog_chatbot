@@ -6,6 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Dog Chatbot">
     <meta name="mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -26,12 +27,15 @@
   <body>
       <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
     <header>
-      <%= render "shared/navbar" %> <!-- navbar -->
     </header>
     <br>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
     <%= yield %>
+    <footer>
+
+      <%= render "shared/navbar" %> <!-- navbar -->
+    </footer>
   </body>
 </html>

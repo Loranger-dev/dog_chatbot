@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :chats, only: [:index, :show] do
-    resources :messages, only: [:create]
+    resources :messages, only: [:new, :create, :show]
   end
 end

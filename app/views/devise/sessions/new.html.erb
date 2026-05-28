@@ -1,20 +1,30 @@
-<h2>Log in</h2>
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="row w-100 justify-content-center">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-5 bg">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="card bg-white p-4">
+      <div class="container d-flex justify-content-center pb-4">
+      <%= image_tag "doggy_picto.svg", class: "img-fluid", style: "width: 100px;" %>
+    </div>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email,
+                label: "Je saisis mon e-mail",
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "email", class: "form-control-lg bg-white border-warning rounded shadow-sm" } %>
     <%= f.input :password,
+                label: "Je saisis mon mot de passe",
                 required: false,
-                input_html: { autocomplete: "current-password" } %>
+                input_html: { autocomplete: "current-password", class: "form-control-lg bg-white border-warning rounded shadow-sm"} %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+  <div class="form-actions d-flex justify-content-center">
+    <%= f.button :submit, "Log in", class: "d-flex rounded btn btn-orange justify-content-center rounded px-4" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

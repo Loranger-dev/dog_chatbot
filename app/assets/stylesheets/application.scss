@@ -20,6 +20,7 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: "DM Sans", sans-serif;
+    background-color: white;
 }
 
 /* Couleur Orange officielle extraite du logo SVG */
@@ -113,4 +114,39 @@ html, body {
 #userInput:focus {
     border: 1px solid #cecece !important;
     box-shadow: none !important;
+}
+
+.btn-orange {
+  background-color: #ff6e39;
+  color: white;
+  font-weight: 800;
+}
+
+.btn-orange-reverse {
+  background-color: transparent;
+  color: #ff6e39;
+  font-weight: 800;
+
+}
+
+.card {
+  padding: 50px;
+  margin-bottom: 10px;
+  background : rgba(255, 255, 255, 0.2);
+  border-radius : 15px;
+  // box-shadow : 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter : blur(10px);
+  -webkit-backdrop-filter : blur(10px); /* Safari */
+  border : 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.nav-icon a {
+  color: black;
+  font-size: 28px;
+  transition: 0.2s ease;
+}
+
+.active-nav {
+  color: #ff5500;
 }

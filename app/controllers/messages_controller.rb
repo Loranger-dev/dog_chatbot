@@ -22,6 +22,10 @@ class MessagesController < ApplicationController
     redirect_to chat_path(@chat)
   end
 
+  def show
+    @message = Message.find(params[:id])
+  end
+
   private
 
   def message_params
