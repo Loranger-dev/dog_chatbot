@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   def create
     @chat = current_user.chats.find(params[:chat_id])
 
-    user_message = Message.create!(
+    user_message = Message.create(
       chat: @chat,
       role: "user",
       content: message_params[:content]
@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       @chat.dog
     )
 
-    Message.create!(
+    Message.create(
       chat: @chat,
       role: "assistant",
       content: ai_response
@@ -29,6 +29,12 @@ class MessagesController < ApplicationController
   end
 
   def generate_ai_response(content, dog)
-    "Réponse pour #{dog.name} : #{content}"
+    response = RubyLLM.chat.ask(
+      "Tu es un expert canin.
+    Le chien s'appelle #{dog.name}.
+    Message du propriétaire : #{content}"
+    )
+
+    response.content
   end
 end
