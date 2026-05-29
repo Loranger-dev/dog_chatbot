@@ -58,6 +58,7 @@
 
               </div>
 
+<<<<<<< HEAD
             </div>
           </div>
         </div>
@@ -68,4 +69,21 @@
 
   <% end %>
 
+=======
+            <div class="cards">
+                    <% @dogs.each do |dog| %>
+                    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+                      <h3 class="fw-bold"><%= link_to dog.name, dog_path(dog),
+                          class: "btn btn-dark text-white" %><% dog.name %></h3>
+                    </div>
+                    <% end %>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+>>>>>>> 185128ad6146c53b933c861a5d9fe2fce4396c4e
 </div>
