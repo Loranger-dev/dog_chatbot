@@ -1,62 +1,69 @@
 <div class="container-fluid vh-90 p-5">
-  <div class="row h-100 m-0">
+  <div class="row h-100 m-0">
 
-    <!-- SIDEBAR -->
-    <div class="col-md-3 border-end bg-white d-none d-md-flex flex-column p-4">
+    <!-- SIDEBAR -->
+    <div class="col-md-3 border-end bg-white d-none d-md-flex flex-column p-4">
+      <h4 class="fw-bold mb-4 text-orange">
+        <%= image_tag "doggy.svg", class: "img-fluid", style: "width: 100px;" %>
+      </h4>
 
-      <h4 class="fw-bold mb-4 text-orange">
-        <%= image_tag "doggy.svg", class: "img-fluid", style: "width: 100px;" %>
-      </h4>
+      <h6 class="text-muted mb-3">Anciennes discussions</h6>
 
-      <h6 class="text-muted mb-3">Anciennes discussions</h6>
+      <% current_user.chats.order(updated_at: :desc).each do |chat| %>
+        <%= link_to chat.display_title,
+            chat_path(chat),
+            class: "text-decoration-none text-dark mb-3 d-block" %>
+      <% end %>
 
-      <% current_user.chats.each do |chat| %>
-        <%= link_to chat.title, chat_path(chat),
-            class: "text-decoration-none text-dark mb-3 d-block" %>
-      <% end %>
+      <div class="mt-auto">
+        <%= link_to "Mes chiens",
+            dogs_path,
+            class: "btn btn-outline-primary rounded-pill w-100 mb-2" %>
 
-      <div class="mt-auto">
-        <%= link_to "Mes chiens", dogs_path,
-            class: "btn btn-outline-primary rounded-pill w-100 mb-2" %>
+        <%= button_to "Déconnexion",
+            destroy_user_session_path,
+            method: :delete,
+            class: "btn btn-danger rounded-pill w-100" %>
+      </div>
+    </div>
 
-        <%= button_to "Déconnexion", destroy_user_session_path,
-            method: :delete,
-            class: "btn btn-danger rounded-pill w-100" %>
-      </div>
+    <!-- CHAT -->
+    <div class="col d-flex flex-column bg-light p-0">
 
-    </div>
+      <!-- HEADER -->
+      <div class="bg-white border-bottom p-3 d-flex align-items-center gap-3">
+        <%= link_to "← Retour",
+            dog_path(@chat.dog),
+            class: "text-muted text-decoration-none" %>
 
-    <!-- CHAT -->
-    <div class="col d-flex flex-column bg-light p-0">
+        <div>
+          <h4 class="fw-bold mb-0">
+            <%= @chat.dog.name %>
+          </h4>
 
-      <!-- HEADER -->
-      <div class="bg-white border-bottom p-3 d-flex align-items-center gap-3">
-        <%= link_to "← Retour", dog_path(@chat.dog),
-            class: "text-muted text-decoration-none" %>
+          <small class="text-muted">
+            Assistant IA Doggy
+          </small>
+        </div>
+      </div>
 
-        <div>
-          <h4 class="fw-bold mb-0"><%= @chat.dog.name %></h4>
-          <small class="text-muted">Assistant IA Doggy</small>
-        </div>
-      </div>
+      <!-- MESSAGES -->
+      <div class="flex-grow-1 overflow-auto p-4 messages-container" id="messages">
+        <%= render "messages/messages", messages: @messages %>
 
-      <!-- MESSAGES -->
-      <div class="flex-grow-1 overflow-auto p-4 messages-container" id="messages">
-        <%= render "messages/messages", messages: @messages %>
+        <% if @messages.empty? %>
+          <div class="text-center text-muted mt-5">
+            <p>Posez votre première question ci-dessous pour démarrer la conversation !</p>
+          </div>
+        <% end %>
+      </div>
 
-        <% if @messages.empty? %>
-          <div class="text-center text-muted mt-5">
-            <p>Posez votre première question ci-dessous pour démarrer la conversation !</p>
-          </div>
-        <% end %>
-      </div>
+      <!-- INPUT -->
+      <div class="bg-white border-top p-3 mb-3" id="new_message_container">
+        <%= render "messages/form", chat: @chat, message: @message %>
+      </div>
 
-      <!-- INPUT -->
-      <div class="bg-white border-top p-3 mb-3" id="new_message_container">
-        <%= render "messages/form", chat: @chat, message: @message %>
-      </div>
+    </div>
 
-    </div>
-
-  </div>
+  </div>
 </div>

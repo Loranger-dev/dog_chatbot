@@ -1,75 +1,54 @@
 <div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="container">
+      <h1 class="fw-bold">
+        Conversations
+      </h1>
+    </div>
 
-  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="container d-flex flex-row-reverse gap-2">
+      <%= link_to "Mes chiens",
+          dogs_path,
+          class: "btn btn-primary rounded px-4" %>
 
-    <div class="container">
+      <% if current_user.dogs.exists? %>
+        <%= button_to "Nouveau chat",
+            dog_chats_path(current_user.dogs.first),
+            method: :post,
+            class: "btn btn-outline-primary rounded mb-2" %>
+      <% else %>
+        <p>Merci de créer un chien pour débuter un chat</p>
 
-      <h1 class="fw-bold">
-        Conversations
-      </h1>
+        <%= link_to "Créer un chien",
+            new_dog_path,
+            class: "btn btn-primary rounded-pill px-4" %>
+      <% end %>
+    </div>
+  </div>
 
-    </div>
-<div class="container d-flex flex-row-reverse">
+  <% if @chats.any? %>
+    <div class="row g-4">
+      <% @chats.each do |chat| %>
+        <div class="col-md-4">
+          <div class="card-chat border-0 shadow-sm rounded-4 h-100">
+            <div class="card-body p-3">
+              <h5 class="fw-bold">
+                <%= chat.display_title %>
+              </h5>
 
-    <%= link_to "Mes chiens",
-        dogs_path,
-        class: "btn btn-primary rounded px-4" %>
-
-    <% if current_user.dogs.exists? %>
-    <%= link_to "Nouveau chat",
-        dog_chats_path(current_user.dogs.first),
-        data: {turbo_method: :post},
-        class: "btn btn-outline-primary rounded w-100 mb-2" %>
-     <% else %>
-     <p>Merci de créer un chien pour débuter un chat</p>
-     <%= link_to "Créer un chien",
-        new_dog_path,
-        class: "btn btn-primary rounded-pill px-4" %>
-    <% end %>
-</div>
-
-  </div>
-
-  <% if @chats.any? %>
-
-    <div class="d-inline row g-4">
-
-      <% @chats.each do |chat| %>
-
-        <div class="d-inline col-md-4">
-
-          <div class="card-chat border-0 shadow-sm rounded-4 h-100">
-
-            <div class="card-body p-0">
-
-              <h5 class="fw-bold">
-                <%= chat.title %>
-              </h5>
-
-              <%= link_to "Ouvrir",
-                  chat_path(chat),
-                  class: "btn btn-orange rounded w-30" %>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      <% end %>
-
-    </div>
-
-  <% else %>
-
-    <div class="bg-white rounded-4 shadow-sm p-5 text-center">
-
-      <h3 class="fw-bold">
-        Aucune conversation
-      </h3>
-
-    </div>
-
-  <% end %>
-
+              <%= link_to "Ouvrir",
+                  chat_path(chat),
+                  class: "btn btn-orange rounded w-30" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="bg-white rounded-4 shadow-sm p-5 text-center">
+      <h3 class="fw-bold">
+        Aucune conversation
+      </h3>
+    </div>
+  <% end %>
 </div>
