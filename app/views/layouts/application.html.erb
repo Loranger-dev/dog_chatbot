@@ -25,15 +25,16 @@
   </head>
 
   <body>
-      <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
-    <header>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= render "shared/flashes" %>
-    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= render "shared/flashes" %>
     <%= yield %>
     <footer>
-      <%= render "shared/navbar" %> <!-- navbar -->
+
+    <%= render 'shared/navbar_top' %>
+      <% if user_signed_in? %>
+    <%= render 'shared/navbar' %>
+  <% end %>
     </footer>
   </body>
 </html>

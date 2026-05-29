@@ -1,3 +1,5 @@
+
+
 <nav class="bottom-nav border-top bg-white d-flex justify-content-around align-items-center fixed-bottom py-3">
   <% if user_signed_in? %>
     <%= link_to root_path, class: "nav-icon #{'active-nav' if current_page?(root_path)} fs-4", title: "Accueil" do %>
@@ -8,6 +10,8 @@
       <i class="fa-solid fa-house"></i>
     <% end %>
   <% end %>
+
+
     <%= link_to chats_path, class:"nav-icon #{'active-nav' if current_page?(chats_path)} text-dark fs-4", title:"Map" do %>
     <i class="fa-solid fa-map-location-dot"></i>
     <% end %>
@@ -17,8 +21,10 @@
     <%= link_to chats_path, class:"nav-icon #{'active-nav' if current_page?(chats_path)} text-warning fs-4", title:"Chatbot" do %>
     <i class="fa-solid fa-comment-dots"></i>
     <% end %>
+
+
     <% if user_signed_in? %>
-  <%= link_to dog_path(current_user[:id]), class: "nav-icon #{'active-nav' if current_page?(root_path)} text-dark fs-4", title: "Profil" do %>
+  <%= link_to dogs_path, class: "nav-icon #{'active-nav' if current_page?(root_path)} text-dark fs-4", title: "Profil" do %>
     <i class="fa-solid fa-user"></i>
   <% end %>
 <% else %>
