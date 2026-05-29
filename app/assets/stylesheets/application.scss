@@ -18,10 +18,10 @@
 /* Ajustements pour que l'application prenne tout l'écran sans défiler */
 html, body {
     height: 100%;
-    margin: 0;
     font-family: "DM Sans", sans-serif;
     background-color: white;
     padding-bottom: 60px;
+    padding-top: 20px;
 }
 
 /* Couleur Orange officielle extraite du logo SVG */
@@ -135,6 +135,10 @@ html, body {
 
 }
 
+.shadow-doggy {
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
 .bg-doggy {
   background-color: #ff6e39;
 }
@@ -144,11 +148,11 @@ border-color: #ff6e39;
 border-radius: 8px;
 }
 .card {
-  padding: 50px;
+  padding: 0px;
   margin-bottom: 10px;
   background : rgba(255, 255, 255, 0.2);
   border-radius : 15px;
-  // box-shadow : 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow : 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter : blur(10px);
   -webkit-backdrop-filter : blur(10px); /* Safari */
   border : 1px solid rgba(255, 255, 255, 0.3);
@@ -218,4 +222,122 @@ border-radius: 8px;
 
 .notification .notification-actions a:hover {
   color: #555555;
+}
+
+
+.split-background {
+  // Création du dégradé linéaire qui coupe l'écran en deux
+  background: linear-gradient(to right, #ff6600 50%, #ffffff 50%);
+  min-height: 100vh; // S'assure que le fond prend toute la hauteur
+  width: 100%;
+}
+
+.split-background-images {
+  // On définit deux images. La première est à gauche, la seconde à droite.
+  // "50% 100%" signifie que chaque image prend 50% de la largeur du bloc.
+ background-image: image-url('dogs_pic.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+h1, h1, h3, h4, h5 {
+      font-family: "DM Sans", sans-serif;
+
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-bottom: 20px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .dogs-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .dogs-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .dogs-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .dogs-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .dogs-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#form_session {
+
+color: white;
+}
+
+#CARD_PRODUCT
+
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
 }
