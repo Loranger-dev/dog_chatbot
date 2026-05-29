@@ -4,5 +4,11 @@ class Chat < ApplicationRecord
 
   has_many :messages, dependent: :destroy
 
-  validates :title, presence: true
+  def display_title
+    return "#{dog.name} : Nouvelle conversation" if title.blank?
+
+    return "#{dog.name} : Nouvelle conversation" if title.match?(%r{\A/chats/\d+\z})
+
+    "#{dog.name} : #{title}"
+  end
 end

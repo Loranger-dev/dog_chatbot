@@ -1,6 +1,6 @@
 class ChatsController < ApplicationController
   def index
-    @chats = current_user.chats
+    @chats = current_user.chats.order(updated_at: :desc)
   end
 
   def show
@@ -12,10 +12,7 @@ class ChatsController < ApplicationController
   def create
     @dog = current_user.dogs.find(params[:dog_id])
 
-    @chat = Chat.new(
-      title: "Conversation avec #{@dog.name}"
-    )
-
+    @chat = Chat.new
     @chat.user = current_user
     @chat.dog = @dog
 
